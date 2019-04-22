@@ -9,4 +9,11 @@
 i {
   margin: 20px 60px 0 0;
   color: grey;
+  transition: all .5s ease;
+}
+
+i:hover {
+  cursor: pointer;
+  color: #F73A3A;
+  transform: scale(1.1);
 }
