@@ -1,0 +1,12 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+i {
+  margin: 20px 60px 0 0;
+  color: grey;
+}

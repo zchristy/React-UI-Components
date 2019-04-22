@@ -4,7 +4,7 @@ import './Card.css';
 class CardBanner extends Component {
   render() {
     return (
-      <div classname="card-banner">
+      <div className="card-banner">
         <img src="react.png" alt="react banner" />
       </div>
     );

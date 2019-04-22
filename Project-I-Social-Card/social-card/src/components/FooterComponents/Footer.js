@@ -5,10 +5,10 @@ class Footer extends Component {
   render() {
     return (
       <div className='footer-container'>
-        <i class="far fa-comment"></i>
-        <i class="fas fa-retweet"> 16</i>
-        <i class="far fa-heart"> 400</i>
-        <i class="far fa-envelope"></i>
+        <i className="far fa-comment"></i>
+        <i className="fas fa-retweet"> 16</i>
+        <i className="far fa-heart"> 400</i>
+        <i className="far fa-envelope"></i>
       </div>
     );
   }

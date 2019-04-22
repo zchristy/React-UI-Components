@@ -8,10 +8,10 @@ class HeaderTitle extends Component {
   render() {
 
     return (
-      <div classname='header-title'>
+      <div className='header-title'>
         <h1>Lambda School</h1>
         <h2>@LambdaSchool</h2>
-        <h2>{moment().startOf('hour').fromNow()}</h2>
+        <h2><span> - </span>{moment().startOf('hour').fromNow()}</h2>
       </div>
     );
   }
