@@ -170,6 +170,10 @@ class App extends Component {
           this.setState({
               total: (eval(this.state.total).toFixed(4) || '0' )
           });
+        } else if(eval(this.state.total) % 1 !== 0) {
+          this.setState({
+              total: (eval(this.state.total).toFixed(4) || '0' )
+          });
         } else {
           this.setState({
               total: (eval(this.state.total) || '0' )
