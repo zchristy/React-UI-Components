@@ -13,6 +13,10 @@ class App extends Component {
         buttonStyle: 'clear'
       },
       {
+        text: '<',
+        buttonStyle: 'back'
+      },
+      {
         text: 1,
         buttonStyle: 'number'
       },
@@ -51,6 +55,10 @@ class App extends Component {
       {
         text: 0,
         buttonStyle: 'zero'
+      },
+      {
+        text: '.',
+        buttonStyle: 'dot'
       }
     ],
     actions: [
@@ -85,7 +93,7 @@ class App extends Component {
     }
   }
 
-  clickHandler = event => {
+  clickHandler = (event, prevState) => {
 
     let button = event;
 
@@ -99,28 +107,36 @@ class App extends Component {
 
     if(button === '=') {
       this.calculate();
-    } else if(button === 'Clear') {
+    }
+    else if(button === 'Clear') {
         this.reset();
-    } else {
-        if(this.state.total === 0) {
-          this.reset();
+      }
+    else if(button === '<') {
+      if(this.state.total.length <= 1) {
+        this.setState({
+          total: 0
+        });
+      } else if(this.state.total.length > 1) {
           this.setState({
-            total: button
+            total: this.state.total.slice(0, -1)
           });
-        } else {
-            if(document.documentElement.clientWidth > 1399) {
-              if(this.state.total.length >= 14){
-                alert('You have gone too far my friend... Start Over!');
-                this.setState({
-                  total: this.state.total
-                });
-              } else {
-                this.setState({
-                  total: this.state.total + button
-                });
-              }
-            } else {
-                if(this.state.total.length >= 10){
+        }
+      }
+      else if(button === '.') {
+          this.setState({
+            total: this.state.total + button
+          });
+      }
+      else {
+          if(this.state.total === 0) {
+            this.reset();
+            this.setState({
+              total: button
+            });
+          }
+          else {
+              if(document.documentElement.clientWidth > 1399) {
+                if(this.state.total.length >= 14){
                   alert('You have gone too far my friend... Start Over!');
                   this.setState({
                     total: this.state.total
@@ -130,10 +146,22 @@ class App extends Component {
                     total: this.state.total + button
                   });
                 }
-            }
+              }
+              else {
+                  if(this.state.total.length >= 10){
+                    alert('You have gone too far my friend... Start Over!');
+                    this.setState({
+                      total: this.state.total
+                    });
+                  } else {
+                    this.setState({
+                      total: this.state.total + button
+                    });
+                  }
+              }
 
-        }
-    }
+          }
+      }
   };
 
   calculate = () => {
@@ -162,7 +190,7 @@ class App extends Component {
       <div className="App">
         <Display total={this.state.total}/>
         <div className="button-container">
-          <NumberButton  numButton={this.props.numbers} onClick={(e) => this.clickHandler(e.target.textContent)}/>
+          <NumberButton numButton={this.props.numbers} onClick={(e) => this.clickHandler(e.target.textContent)}/>
           <ActionButton actButton={this.props.actions} onClick={(e) => this.clickHandler(e.target.textContent)}/>
         </div>
       </div>
