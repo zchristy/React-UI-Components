@@ -93,7 +93,7 @@ class App extends Component {
     }
   }
 
-  clickHandler = (event, prevState) => {
+  clickHandler = (event) => {
 
     let button = event;
 
@@ -166,9 +166,16 @@ class App extends Component {
 
   calculate = () => {
       try {
+        if(eval(this.state.total) < 0) {
           this.setState({
               total: (eval(this.state.total).toFixed(4) || '0' )
-          })
+          });
+        } else {
+          this.setState({
+              total: (eval(this.state.total) || '0' )
+          });
+        }
+
       } catch (e) {
           this.setState({
               total: "error"
