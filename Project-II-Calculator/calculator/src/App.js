@@ -110,7 +110,7 @@ class App extends Component {
     }
     else if(button === 'Clear') {
         this.reset();
-      }
+    }
     else if(button === '<') {
       if(this.state.total.length <= 1) {
         this.setState({
@@ -121,22 +121,34 @@ class App extends Component {
             total: this.state.total.slice(0, -1)
           });
         }
-      }
-      else if(button === '.') {
+    }
+    else if(button === '.') {
+        this.setState({
+          total: this.state.total + button
+        });
+    }
+    else {
+        if(this.state.total === 0) {
+          this.reset();
           this.setState({
-            total: this.state.total + button
+            total: button
           });
-      }
-      else {
-          if(this.state.total === 0) {
-            this.reset();
-            this.setState({
-              total: button
-            });
-          }
-          else {
-              if(document.documentElement.clientWidth > 1399) {
-                if(this.state.total.length >= 14){
+        }
+        else {
+            if(document.documentElement.clientWidth > 1399) {
+              if(this.state.total.length >= 14){
+                alert('You have gone too far my friend... Start Over!');
+                this.setState({
+                  total: this.state.total
+                });
+              } else {
+                this.setState({
+                  total: this.state.total + button
+                });
+              }
+            }
+            else {
+                if(this.state.total.length >= 10){
                   alert('You have gone too far my friend... Start Over!');
                   this.setState({
                     total: this.state.total
@@ -146,36 +158,24 @@ class App extends Component {
                     total: this.state.total + button
                   });
                 }
-              }
-              else {
-                  if(this.state.total.length >= 10){
-                    alert('You have gone too far my friend... Start Over!');
-                    this.setState({
-                      total: this.state.total
-                    });
-                  } else {
-                    this.setState({
-                      total: this.state.total + button
-                    });
-                  }
-              }
+            }
 
-          }
-      }
+        }
+    }
   };
 
   calculate = () => {
-        try {
-            this.setState({
-                total: (eval(this.state.total) || '0' )
-            })
-        } catch (e) {
-            this.setState({
-                total: "error"
-            })
+      try {
+          this.setState({
+              total: (eval(this.state.total).toFixed(4) || '0' )
+          })
+      } catch (e) {
+          this.setState({
+              total: "error"
+          })
 
-        }
-    };
+      }
+  };
 
   reset = () => {
     this.setState({
