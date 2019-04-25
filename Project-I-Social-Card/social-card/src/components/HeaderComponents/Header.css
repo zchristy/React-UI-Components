@@ -1,1 +1,36 @@
-/* All styles for your header Components live here */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 1rem;
+  color: lightgrey;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+
+
+.image-thumbnail {
+  margin-top: 15px;
+}
+
+.image-thumbnail img {
+  width: 2rem;
+}

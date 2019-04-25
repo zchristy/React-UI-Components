@@ -1,4 +1,19 @@
-/* 
-  Write your styles/CSS for App.js here and import into the component that you need 
-  IF you'd like to attempt to use less you'll have to research how to do this with Create React App
-*/
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.thumbnail-container {
+  max-width: 50px;
+  width: 100%;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  max-width: 600px;
+  width: 100%;
+}
